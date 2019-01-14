@@ -1,0 +1,65 @@
+.volume-btn {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.volume {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--apHeight) - 5px);
+  width: 40px;
+  margin-left: -20px;
+  height: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+  background: var(--apBG);
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  z-index: var(--volZ);
+}
+
+.volume::before,
+.volume::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  border: 7px solid transparent;
+  border-top: 7px solid var(--apBG);
+  left: 50%;
+  margin-left: -7px;
+}
+
+.volume::after {
+  bottom: -14px;
+  z-index: -1;
+  border-top: 7px solid #ccc;
+}
+
+.volume-container:hover .volume {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.volume__track {
+  position: relative;
+  display: block;
+  width: var(--barSize);
+  height: 100px;
+  margin: 10px auto;
+  background: var(--barBG);
+  border-radius: var(--barSize);
+  overflow: hidden;
+}
+
+.volume__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--progressBG);
+  height: 50%;
+}

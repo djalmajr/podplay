@@ -1,0 +1,163 @@
+:root {
+  --primaryColor: steelblue;
+  --apBG: #f2f2f2;
+  --plBG: #fff;
+  --plCurrentBG: var(--primaryColor);
+  --plColorIcon: var(--primaryColor);
+  --plCurrentColor: #fff;
+  --plHoverColor: #f6f6f6;
+  --iconColor: #777;
+  --iconColorActive: var(--primaryColor);
+  --iconBGActive: var(--primaryColor);
+  --barBG: #ddd;
+  --barProgressBG: #ccc;
+  --progressBG: var(--primaryColor);
+
+  --fontFamily: inherit;
+  --fontSize: 14px;
+
+  --apHeight: 50px;
+  --apMaxWidth: 1440px;
+  --barSize: 3px;
+
+  --apZ: 99999;
+  --volZ: 88888;
+  --plZ: 77777;
+}
+
+/*-----------------------
+  Audio Player
+------------------------*/
+
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--apHeight);
+  font-family: var(--fontFamily);
+  font-size: var(--fontSize);
+  user-select: none;
+  border-top: 1px solid #ccc;
+  background: var(--apBG);
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  z-index: var(--apZ);
+}
+
+.player__inner {
+  display: flex;
+  max-width: var(--apMaxWidth);
+  margin: auto;
+}
+
+.player__item {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.player__item--playback > .player__controls,
+.player__item--settings > .player__controls {
+  flex: 0 25%;
+}
+@keyframes fs {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Controls */
+.player button,
+.player__controls {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  position: relative;
+  display: block;
+  height: var(--apHeight);
+  text-align: center;
+  cursor: pointer;
+  transition: background .3s ease;
+}
+
+.player button:active,
+.player__controls:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.player button:hover,
+.player__controls:hover {
+  opacity: 1;
+}
+
+.icon-play > path {
+  transition: all .3s ease;
+}
+
+.is-playing .icon-play {
+  fill: var(--iconColorActive);
+}
+
+/* Volume */
+
+.icon-volume-off {
+  display: none;
+}
+
+.has-muted {}
+
+.has-muted .icon-volume-on {
+  display: none;
+}
+
+.has-muted .icon-volume-off {
+  display: inline;
+  opacity: .7;
+}
+
+.player__controls.is-active > svg {
+  fill: var(--iconColorActive);
+  filter: drop-shadow(0 0 3px rgba(var(--iconColorActive), 0.4));
+}
+@media (max-width: 1024px) {
+  .player__item > .player__controls {
+    flex: 1;
+  }
+}
+@media (max-width: 580px) {
+  .player {
+    min-width: 250px;
+  }
+
+  .player,
+  .player__inner {
+    height: auto;
+  }
+
+  .player__inner {
+    flex-wrap: wrap;
+  }
+
+  .player__item--track {
+    margin-bottom: 10px;
+    padding: 0 20px;
+    order: 1;
+    flex: 1 1 100%;
+  }
+
+  .player__item--playback,
+  .player__item--settings {
+    flex: 1 1 50%;
+    order: 2;
+  }
+}
