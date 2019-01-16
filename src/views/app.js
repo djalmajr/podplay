@@ -1,25 +1,10 @@
-import { wire } from "hyperhtml";
-import Playback from "./playback.js";
+import { html } from "lighterhtml";
+import TopBar from "./topbar.js";
 import Playlist from "./playlist.js";
-import Settings from "./settings.js";
-import Track from "./track.js";
+import Player from "./player.js";
+import Navigation from "./navigation.js";
 import "./app.css";
 
-const playbackWire = wire();
-const playlistWire = wire();
-const settingsWire = wire();
-const trackWire = wire();
-
-export default render => render`
-  ${Playlist(playlistWire)}
-  <div class="player" id="player">
-    <div class="player__inner">
-      ${Playback(playbackWire)}
-      ${Track(trackWire)}
-      ${Settings(settingsWire)}
-    </div>
-  </div>
-  <div>
-    starring
-  </div>
+export default () => html`
+  ${TopBar()} ${Playlist()} ${Player()} ${Navigation()}
 `;

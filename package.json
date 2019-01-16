@@ -23,7 +23,7 @@
     "version": "run-version"
   },
   "dependencies": {
-    "hyperhtml": "2.25.3"
+    "lighterhtml": "^0.4.0"
   },
   "devDependencies": {
     "wprun": "djalmajr/wprun"

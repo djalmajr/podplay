@@ -1,9 +1,9 @@
 .pl-container {
-  bottom: var(--apHeight);
-  overflow: auto;
+  background: var(--plBG);
+  flex: 1;
   font-family: var(--font)-family;
   font-size: var(--font)-size;
-  background: var(--plBG);
+  overflow: auto;
   z-index: var(--plZ);
 }
 
@@ -26,7 +26,7 @@
   fill: var(--plColorIcon);
 }
 
-.pl-list + .pl-list {
+.pl-list+.pl-list {
   border-top: 1px solid #eee;
 }
 
@@ -69,7 +69,7 @@
   transition: opacity .2s ease;
 }
 
-.pl-list__remove > svg {
+.pl-list__remove>svg {
   width: 16px;
   height: 16px;
 }
@@ -115,6 +115,7 @@
   letter-spacing: 2px;
   color: #ccc;
 }
+
 @keyframes eq {
   0% {
     height: 3px;
@@ -154,12 +155,4 @@
 
 .eq__bar:nth-child(3) {
   animation: eq .8s ease-in-out infinite .4s;
-}
-
-.h-hide {
-  display: none;
-}
-
-.h-show {
-  display: block;
 }

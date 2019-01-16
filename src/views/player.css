@@ -1,0 +1,271 @@
+/* === Audio Player === */
+
+.player {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fontFamily);
+  font-size: 1rem;
+  height: var(--playerHeight);
+  user-select: none;
+}
+
+.player__inner {
+  background: var(--apBG);
+  display: flex;
+  height: var(--playerHeight);
+  position: relative;
+}
+
+.player__playback {
+  display: flex;
+  position: relative;
+}
+
+.player__img {
+  position: absolute;
+  height: var(--playerHeight);
+  width: var(--playerHeight);
+  top: 0;
+  right: 0;
+  z-index: 0;
+  opacity: .3;
+}
+
+/* === Controls === */
+
+.player button,
+.player__controls {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: var(--playerHeight);
+  justify-content: center;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  transition: background .3s ease;
+  width: var(--playerHeight);
+}
+
+.player button:active,
+.player__controls:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.player button:hover,
+.player__controls:hover {
+  opacity: 1;
+}
+
+.player__controls--toggle {
+  z-index: var(--apZ);
+}
+
+.h-hide {
+  display: none !important;
+}
+
+.player__controls svg {
+  fill: white;
+}
+
+.icon-play > path {
+  transition: all .3s ease;
+}
+
+.is-playing .icon-play {
+  fill: var(--iconColorActive);
+}
+
+/* === Track === */
+
+.player-info {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.player-info-title {
+  font-size: .9em;
+  font-weight: bold;
+  margin: 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.player-info-time {
+  font-size: .7em;
+  margin: 0 8px;
+}
+
+/* === Controls === */
+
+.player__settings {
+  display: flex;
+  width: calc(var(--playerHeight) * 4);
+}
+
+/* === Volume === */
+
+.icon-volume-off {
+  display: none;
+}
+
+.has-muted {}
+
+.has-muted .icon-volume-on {
+  display: none;
+}
+
+.has-muted .icon-volume-off {
+  display: inline;
+  opacity: .7;
+}
+
+.player__controls.is-active > svg {
+  fill: var(--iconColorActive);
+  filter: drop-shadow(0 0 3px rgba(var(--iconColorActive), 0.4));
+}
+
+.volume-btn {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.volume {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--playerHeight) - 5px);
+  width: 40px;
+  margin-left: -20px;
+  height: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all .3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+  background: var(--apBG);
+  border: 1px solid white;
+  border-radius: 1px;
+  z-index: var(--volZ);
+}
+
+.volume::after,
+.volume::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  border: 7px solid transparent;
+  border-top: 7px solid var(--apBG);
+  left: 50%;
+  margin-left: -7px;
+}
+
+.volume::after {
+  bottom: -14px;
+  z-index: -1;
+  border-top: 7px solid white;
+}
+
+.volume-container:hover .volume {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.volume__track {
+  position: relative;
+  display: block;
+  width: var(--barSize);
+  height: 100px;
+  margin: 10px auto;
+  background: var(--barBG);
+  border-radius: var(--barSize);
+  overflow: hidden;
+}
+
+.volume__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsl(var(--primaryHue), 100%, 40%);
+  height: 50%;
+}
+
+/* === Progress === */
+
+.progress-container {
+  cursor: pointer;
+  margin-top: 15px;
+  overflow: hidden;
+  padding: 7px 0;
+  position: relative;
+}
+
+.progress-container:hover .progress__bar:after {
+  opacity: 1;
+}
+
+.progress {
+  background: var(--barBG);
+  border-radius: var(--barSize);
+  height: var(--barSize);
+}
+
+.progress__bar,
+.progress__preload {
+  border-radius: var(--barSize) 0 0 var(--barSize);
+  height: var(--barSize);
+  position: absolute;
+  width: 0;
+}
+
+.progress__bar {
+  background: var(--progressBG);
+  z-index: 1;
+}
+
+.progress__bar:after {
+  background: hsl(var(--primaryHue), 100%, 50%);
+  border-radius: 6px;
+  content: "";
+  height: 10px;
+  margin-top: -3px;
+  opacity: 0;
+  position: absolute;
+  right: -10px;
+  top: 0;
+  transition: opacity .3s ease;
+  width: 10px;
+}
+
+.progress__bar--active:after {
+  transform: scale(1.4);
+}
+
+.progress__preload {
+  background: var(--barProgressBG);
+  z-index: 0;
+}
+
+/* === Animations === */
+@keyframes fs {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

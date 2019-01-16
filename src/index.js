@@ -1,16 +1,15 @@
-import { bind, wire } from "hyperhtml";
+import { render } from "lighterhtml";
 import store from "./store.js";
+import App from "./views/app.js";
 
-const appWire = wire();
-const html = bind(document.querySelector("#__wrapper__"));
+const wrapper = document.querySelector("#__wrapper__");
 
-const render = () => {
-  const App = require("./views/app.js").default;
-  return html`${App(appWire)}`;
-}
-
-store.init(render);
+store.init(() => render(wrapper, App));
 
 if (module.hot) {
-  module.hot.accept("./views/app.js", render);
+  module.hot.accept("./views/app.js", () => {
+    const NextApp = require("./views/app.js").default;
+    wrapper.innerHTML = "";
+    wrapper.appendChild(NextApp());
+  });
 }

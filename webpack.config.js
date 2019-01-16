@@ -13,13 +13,14 @@ module.exports = getConfig(__dirname, {
   htmlPluginOptions: {
     title: "PodPlayer",
     description: "PodPlayer",
+    stylesheets: ["https://unpkg.com/ionicons@4.5.0/dist/css/ionicons.min.css"],
   },
   externalsPluginOptions: {
     externals: [
       {
-        module: "hyperhtml",
-        global: "hyperHTML",
-        entry: DEV ? "umd.js" : "https://unpkg.com/hyperhtml@2.25.3/umd.js",
+        module: "lighterhtml",
+        global: "lighterhtml",
+        entry: DEV ? "min.js" : "https://unpkg.com/lighterhtml",
       },
     ],
   },
