@@ -37,6 +37,10 @@ export default {
     return playlist.length === 0;
   },
 
+  get isPlaying() {
+    return false;
+  },
+
   get tracks() {
     return mock.tracks;
   },
