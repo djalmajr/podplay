@@ -1,6 +1,8 @@
 const getConfig = require("wprun");
 
 const DEV = process.env.NODE_ENV === "development";
+const CDN = "https://cdn.jsdelivr.net/npm";
+// const CDN = "https://unpkg.com";
 
 module.exports = getConfig(__dirname, {
   copyPluginOptions: [
@@ -13,14 +15,17 @@ module.exports = getConfig(__dirname, {
   htmlPluginOptions: {
     title: "PodPlayer",
     description: "PodPlayer",
-    stylesheets: ["https://unpkg.com/ionicons@4.5.0/dist/css/ionicons.min.css"],
+    stylesheets: [
+      `${CDN}/ionicons@4.5.1/dist/css/ionicons.min.css`,
+      "https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400,400i,700",
+    ],
   },
   externalsPluginOptions: {
     externals: [
       {
         module: "lighterhtml",
         global: "lighterhtml",
-        entry: DEV ? "min.js" : "https://unpkg.com/lighterhtml",
+        entry: DEV ? "min.js" : `${CDN}/lighterhtml@0.5.0/min.js`,
       },
     ],
   },

@@ -3,7 +3,7 @@
 .player {
   display: flex;
   flex-direction: column;
-  font-family: var(--font-family);
+  font-family: var(--font-family-1);
   font-size: 1rem;
   height: var(--player-size);
   user-select: none;

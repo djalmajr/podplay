@@ -1,5 +1,6 @@
 :root {
-  --font-family: inherit;
+  --font-family-1: "Open Sans", sans-serif;
+  --font-family-2: "Raleway", sans-serif;
   --text-color: #707070;
 
   --hue-1: 28;
@@ -23,6 +24,10 @@
   --playlist-z: 77777;
 
   --ms: 0.5s;
+}
+
+html, body {
+  font-family: var(--font-family-1);
 }
 
 #__wrapper__ {

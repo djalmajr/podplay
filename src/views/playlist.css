@@ -2,7 +2,6 @@
   background: #fff;
   color: var(--text-color);
   flex: 1;
-  font-family: var(--font-family);
   font-size: 1rem;
   margin: 0;
   overflow: auto;
@@ -77,6 +76,7 @@
   -webkit-box-orient: vertical;
   display: -webkit-box;
   flex-direction: column;
+  font-family: var(--font-family-2);
   font-size: 1em;
   line-height: var(--playlist-item-desc-line-height);
   max-height: calc(1em * var(--playlist-item-desc-line-height) * var(--playlist-item-desc-lines));
@@ -105,28 +105,21 @@
   display: none;
 }
 
-.playlist-item.is-active .playlist-item-remove,
-.playlist-item:hover .playlist-item-remove {
-  opacity: 1;
-}
-
-.playlist-item.is-active .playlist-item-remove:hover {
-  background: hsl(var(--hue-1), var(--sat-1), calc(var(--lgt-1) + 5%));
-}
 
 /* === Equalizer === */
 
 .eq {
-  display: flex;
-  width: var(--playlist-item-icon-size);
-  height: var(--playlist-item-icon-size);
-  margin: 0 auto;
-  justify-content: space-between;
   align-items: flex-end;
+  display: flex;
+  height: var(--playlist-item-icon-size);
+  justify-content: space-between;
+  margin: 0 auto;
+  width: var(--playlist-item-icon-size);
 }
 
 .eq-bar {
   background: var(--playlist-current-color);
+  border: 1px solid hsl(0, 0%, 50%);
   filter: drop-shadow(0 0 5px var(--playlist-current-color));
   width: 4px;
 }
