@@ -1,47 +1,46 @@
 import { html } from "lighterhtml";
-import store from "../store.js";
+import store from "../store";
 import "./player.css";
 
 const BTN_SIZE = 45;
-const img = "http://bibotalk.com/wp-content/uploads/2018/12/fde60post-360x200.png";
 
 // <div class="progress-container">
 //   <div class="progress">
-//     <div class="progress__bar"></div>
-//     <div class="progress__preload"></div>
+//     <div class="progress-bar"></div>
+//     <div class="progress-preload"></div>
 //   </div>
 // </div>
 export default () => {
   const btnCount = store.isPlaying ? 5 : 4;
-  const styles = {
-    info: { width: `calc(100% - ${btnCount} * ${BTN_SIZE}px)` },
-  };
+  const infoStyle = { width: `calc(100% - ${btnCount} * ${BTN_SIZE}px)` };
+  const togglePath = store.isPlaying
+    ? "M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
+    : "M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z";
 
   return html`
-    <div class="player" id="player">
-      <div class="player__inner">
-        <div class="player__playback">
-          <img class="player__img" src=${img} /> ${
-            (store.isPlaying && []) ||
-              html`
-                <button class="player__controls">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 12 12"
-                  >
-                    <path
-                      d="M238.049,237.084l4.834,4.833a.683.683,0,1,1-.966.967l-4.833-4.833-4.833,4.833a.683.683,0,1,1-.967-.966l4.833-4.833-4.833-4.833a.683.683,0,1,1,.966-.967l4.833,4.833,4.833-4.833a.683.683,0,1,1,.967.966l-4.833,4.833Z"
-                      transform="translate(-231.083 -231.084)"
-                    />
-                  </svg>
-                </button>
-              `
-          }
+    <div class="player">
+      <div class="player-inner">
+        <div class="player-playback">
+          <img
+            class="player-img"
+            src="http://bibotalk.com/wp-content/uploads/2018/12/fde60post-360x200.png"
+          />
+          <button class=${`player-controls${!store.isPlaying ? "" : " h-hide"}`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M238.049,237.084l4.834,4.833a.683.683,0,1,1-.966.967l-4.833-4.833-4.833,4.833a.683.683,0,1,1-.967-.966l4.833-4.833-4.833-4.833a.683.683,0,1,1,.966-.967l4.833,4.833,4.833-4.833a.683.683,0,1,1,.967.966l-4.833,4.833Z"
+                transform="translate(-231.083 -231.084)"
+              />
+            </svg>
+          </button>
           <button
-            class="player__controls player__controls--toggle"
-            onclick=${() => store.playToggle()}
+            class="player-controls player-controls--toggle"
+            onclick=${() => store.playPause()}
           >
             <svg
               class="icon-play"
@@ -51,74 +50,65 @@ export default () => {
               width="36"
               height="36"
               viewBox="0 0 36 36"
-              data-play="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-              data-pause="M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z"
             >
-              <path
-                d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-              ></path>
+              <path d=${togglePath}></path>
             </svg>
           </button>
         </div>
-        <div class="player-info" style=${styles.info}>
+        <div class="player-info" style=${infoStyle}>
           <div class="player-info-title">233 - Os Gregos e Troianos Juntos</div>
           <div class="player-info-time">
             <span class="player-info-time--current">23:23</span> <span> / </span>
             <span class="player-info-time--duration">54:54</span>
           </div>
         </div>
-        <div class="player__settings">
-          ${
-            (!store.isPlaying && []) ||
-              html`
-                <button class="player__controls">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="26"
-                    height="21.798"
-                    viewBox="0 0 28 23.798"
-                  >
-                    <g transform="translate(-207 -560)">
-                      <path
-                        d="M24.537,105.886A11.9,11.9,0,0,0,4.225,114.3v1.81l-3-3a.7.7,0,1,0-.99.99l4.2,4.2a.7.7,0,0,0,.991,0l4.2-4.2a.7.7,0,1,0-.99-.99l-3,3V114.3a10.5,10.5,0,1,1,10.5,10.5.7.7,0,1,0,0,1.4,11.9,11.9,0,0,0,8.413-20.312Z"
-                        transform="translate(206.974 457.6)"
-                      />
-                      <text
-                        transform="translate(217.464 576.016)"
-                        font-size="11"
-                        font-family="OpenSans, Open Sans"
-                      >
-                        <tspan x="0" y="0">15</tspan>
-                      </text>
-                    </g>
-                  </svg>
-                </button>
-                <button class="player__controls">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="27"
-                    height="22.798"
-                    viewBox="0 0 28 23.798"
-                  >
-                    <g transform="translate(-241 -560)">
-                      <path
-                        d="M3.488,105.886A11.9,11.9,0,0,1,23.8,114.3v1.81l3-3a.7.7,0,1,1,.99.99l-4.2,4.2a.7.7,0,0,1-.991,0l-4.2-4.2a.7.7,0,0,1,.99-.99l3,3V114.3a10.5,10.5,0,1,0-10.5,10.5.7.7,0,1,1,0,1.4,11.9,11.9,0,0,1-8.413-20.313Z"
-                        transform="translate(241.001 457.6)"
-                      />
-                      <text
-                        transform="translate(245.211 576.11)"
-                        font-size="11"
-                        font-family="OpenSans, Open Sans"
-                      >
-                        <tspan x="0" y="0">15</tspan>
-                      </text>
-                    </g>
-                  </svg>
-                </button>
-              `
-          }
-          <div class="player__controls volume-container">
-            <button class="player__controls volume-btn">
+        <div class="player-settings">
+          <button class=${`player-controls ${store.isPlaying ? "" : "h-hide"}`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="21.798"
+              viewBox="0 0 28 23.798"
+            >
+              <g transform="translate(-207 -560)">
+                <path
+                  d="M24.537,105.886A11.9,11.9,0,0,0,4.225,114.3v1.81l-3-3a.7.7,0,1,0-.99.99l4.2,4.2a.7.7,0,0,0,.991,0l4.2-4.2a.7.7,0,1,0-.99-.99l-3,3V114.3a10.5,10.5,0,1,1,10.5,10.5.7.7,0,1,0,0,1.4,11.9,11.9,0,0,0,8.413-20.312Z"
+                  transform="translate(206.974 457.6)"
+                />
+                <text
+                  transform="translate(217.464 576.016)"
+                  font-size="11"
+                  font-family="OpenSans, Open Sans"
+                >
+                  <tspan x="0" y="0">15</tspan>
+                </text>
+              </g>
+            </svg>
+          </button>
+          <button class=${`player-controls ${store.isPlaying ? "" : "h-hide"}`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="22.798"
+              viewBox="0 0 28 23.798"
+            >
+              <g transform="translate(-241 -560)">
+                <path
+                  d="M3.488,105.886A11.9,11.9,0,0,1,23.8,114.3v1.81l3-3a.7.7,0,1,1,.99.99l-4.2,4.2a.7.7,0,0,1-.991,0l-4.2-4.2a.7.7,0,0,1,.99-.99l3,3V114.3a10.5,10.5,0,1,0-10.5,10.5.7.7,0,1,1,0,1.4,11.9,11.9,0,0,1-8.413-20.313Z"
+                  transform="translate(241.001 457.6)"
+                />
+                <text
+                  transform="translate(245.211 576.11)"
+                  font-size="11"
+                  font-family="OpenSans, Open Sans"
+                >
+                  <tspan x="0" y="0">15</tspan>
+                </text>
+              </g>
+            </svg>
+          </button>
+          <div class="player-controls volume-container">
+            <button class="player-controls volume-btn">
               <svg
                 class="icon-volume-on"
                 version="1.1"
@@ -149,10 +139,10 @@ export default () => {
               </svg>
             </button>
             <div class="volume">
-              <div class="volume__track"><div class="volume__bar"></div></div>
+              <div class="volume-track"><div class="volume-bar"></div></div>
             </div>
           </div>
-          <button class="player__controls player__controls--playlist">
+          <button class="player-controls player-controls--playlist">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21.4"

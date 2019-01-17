@@ -13,8 +13,8 @@ const bind = function(callback, config = {}) {
     this[prop] = (() => {
       const method = this[prop];
       return cfg.before
-        ? (...args) => callback() && method(...args)
-        : (...args) => method(...args) && callback();
+        ? (...args) => !!callback() && method(...args)
+        : (...args) => !method(...args) && callback();
     })();
   }
 

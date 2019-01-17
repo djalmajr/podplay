@@ -1,31 +1,37 @@
 :root {
-  --primaryHue: 28;
-  --apBG: #F68A2D;
-  --plBG: #fff;
-  --plCurrentBG: hsl(var(--primaryHue), 100%, 57%);
-  --plColorIcon: hsl(var(--primaryHue), 100%, 57%);
-  --plCurrentColor: #fff;
-  --plHoverColor: #f6f6f6;
-  --iconColor: #777;
-  --iconColorActive: hsl(var(--primaryHue), 100%, 57%);
-  --iconBGActive: hsl(var(--primaryHue), 100%, 57%);
-  --barBG: #ddd;
-  --barProgressBG: #ccc;
-  --progressBG: hsl(var(--primaryHue), 100%, 57%);
+  --font-family: inherit;
+  --text-color: #707070;
 
-  --fontFamily: inherit;
-  --fontSize: 14px;
+  --hue-1: 28;
+  --sat-1: 100%;
+  --lgt-1: 57%;
 
-  --playerHeight: 45px;
-  --barSize: 3px;
+  --hue-2: 0;
+  --sat-2: 0%;
+  --lgt-2: 20%;
 
-  --apZ: 99999;
-  --volZ: 88888;
-  --plZ: 77777;
+  --playlist-current-color: #fff;
+  --playlist-item-size: 5em;
+  --playlist-item-img-size: calc(var(--playlist-item-size) - 1.3em);
+  --playlist-item-icon-size: calc(var(--playlist-item-img-size) / 3.5);
+
+  --bar-size: 3px;
+  --player-size: 45px;
+
+  --player-z: 99999;
+  --volume-z: 88888;
+  --playlist-z: 77777;
+
+  --ms: 0.5s;
 }
 
 #__wrapper__ {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.h-hide {
+  width: 0 !important;
+  overflow: hidden !important;
 }

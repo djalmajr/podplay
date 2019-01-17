@@ -1,7 +1,7 @@
-import player from "./controllers/player.js";
-import playlist from "./controllers/playlist.js";
-import bind from "./helpers/bind.js";
-import mock from "./mock.js";
+import player from "./controllers/player";
+import playlist from "./controllers/playlist";
+import bind from "./helpers/bind";
+import mock from "./mock";
 
 // let _player, _playlist;
 
@@ -12,6 +12,8 @@ const _settings = {
   confirmClose: true,
   notification: true,
 };
+
+let _isPlaying = false;
 
 const _beforeUnload = evt => {
   if (player.isPlaying) {
@@ -38,7 +40,7 @@ export default {
   },
 
   get isPlaying() {
-    return false;
+    return _isPlaying;
   },
 
   get tracks() {
@@ -46,6 +48,10 @@ export default {
   },
 
   // Actions
+
+  playPause() {
+    _isPlaying = !_isPlaying;
+  },
 
   // addToPlaylist(album) {
   //   if (this.isEmptyList) {

@@ -1810,10 +1810,10 @@ domain-browser@^1.1.1:
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
 
-domdiff@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/domdiff/-/domdiff-2.0.2.tgz#c63535384d8d1f5954d36049a9d6a770d8a50dcb"
-  integrity sha512-xmQ4u3GRmd/RDMynLkHkGYcoKIFMWf8E7hqN4osTh/MbB47Fa2IqLkywpqBxOSp/OciCkt1Ny/oDQcLuABGx0A==
+domdiff@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/domdiff/-/domdiff-2.0.3.tgz#064dd9109cb0fffeb361f17965277c467347cdde"
+  integrity sha512-De9vNvWnTIhvNs95ZShYY7Bk8dBa4sQ5KS0evKqF5t5f0sywYiw3OmhDbPONoHDZ33toaZOFerZH/qsjeXCm0g==
   dependencies:
     "@ungap/essential-map" "^0.1.7"
 
@@ -3716,10 +3716,10 @@ lightercollective@^0.1.0:
   resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
   integrity sha512-J9tg5uraYoQKaWbmrzDDexbG6hHnMcWS1qLYgJSWE+mpA3U5OCSeMUhb+K55otgZJ34oFdR0ECvdIb3xuO5JOQ==
 
-lighterhtml@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/lighterhtml/-/lighterhtml-0.4.0.tgz#179016d5ec74eb2e5ce5e9785e878fb69ffddc90"
-  integrity sha512-fWdiLr4Zxs2Y1js9Vlf5jRvSm+JmHObAJbO2JZocXJUjh2MNSZVjPJ1U5/3XtnuCJjRkc5Blf70aguQFFmmgNQ==
+lighterhtml@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/lighterhtml/-/lighterhtml-0.5.0.tgz#9e2ffc6ad61c836a034e3ee0925f3644bec92831"
+  integrity sha512-wB1I0+NdiNiuh7aZckVrRxRuwNwrlLelcTpqBhvOU67wAcwOG1Z5wzQfxiFMhVyJtH94DmhcdF1R9P6iLD3y0w==
   dependencies:
     "@ungap/create-content" "^0.1.4"
     "@ungap/custom-event" "^0.2.0"
@@ -3727,7 +3727,7 @@ lighterhtml@^0.4.0:
     "@ungap/weakmap" "^0.1.4"
     "@ungap/weakset" "^0.1.5"
     disconnected "^0.1.6"
-    domdiff "^2.0.2"
+    domdiff "^2.0.3"
     domtagger "^0.2.3"
     hyperhtml-style "^0.1.2"
     hyperhtml-wire "^2.1.0"

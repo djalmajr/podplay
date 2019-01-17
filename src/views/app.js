@@ -1,10 +1,14 @@
 import { html } from "lighterhtml";
-import TopBar from "./topbar.js";
-import Playlist from "./playlist.js";
-import Player from "./player.js";
-import Navigation from "./navigation.js";
+import TopBar from "./topbar";
+import Playlist from "./playlist";
+import Player from "./player";
+import Navigation from "./navigation";
 import "./app.css";
 
+// prettier-ignore
 export default () => html`
-  ${TopBar()} ${Playlist()} ${Player()} ${Navigation()}
+  ${TopBar()}
+  ${Playlist()}
+  ${Player()}
+  ${Navigation()}
 `;

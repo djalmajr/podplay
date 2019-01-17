@@ -3,28 +3,28 @@
 .player {
   display: flex;
   flex-direction: column;
-  font-family: var(--fontFamily);
+  font-family: var(--font-family);
   font-size: 1rem;
-  height: var(--playerHeight);
+  height: var(--player-size);
   user-select: none;
 }
 
-.player__inner {
-  background: hsl(var(--primaryHue), 100%, 57%);
+.player-inner {
+  background: hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   display: flex;
-  height: var(--playerHeight);
+  height: var(--player-size);
   position: relative;
 }
 
-.player__playback {
+.player-playback {
   display: flex;
   position: relative;
 }
 
-.player__img {
+.player-img {
   position: absolute;
-  height: var(--playerHeight);
-  width: var(--playerHeight);
+  height: var(--player-size);
+  width: var(--player-size);
   top: 0;
   right: 0;
   z-index: 0;
@@ -34,51 +34,44 @@
 /* === Controls === */
 
 .player button,
-.player__controls {
+.player-controls {
   align-items: center;
   background: transparent;
   border: 0;
   color: white;
   cursor: pointer;
   display: flex;
-  height: var(--playerHeight);
+  height: var(--player-size);
   justify-content: center;
   margin: 0;
   outline: 0;
   padding: 0;
   position: relative;
-  transition: background .3s ease;
-  width: var(--playerHeight);
+  width: var(--player-size);
 }
 
 .player button:active,
-.player__controls:hover {
+.player-controls:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
 .player button:hover,
-.player__controls:hover {
+.player-controls:hover {
   opacity: 1;
 }
 
-.player__controls--toggle {
-  z-index: var(--apZ);
+.player-controls--toggle {
+  z-index: var(--player-z);
 }
 
-.h-hide {
-  display: none !important;
-}
-
-.player__controls svg {
+.player-controls svg {
   fill: white;
 }
 
-.icon-play > path {
-  transition: all .5s ease;
-}
-
-.is-playing .icon-play {
-  fill: var(--iconColorActive);
+.icon-play > path,
+.player-controls,
+.player-info {
+  transition: all var(--ms) ease;
 }
 
 /* === Track === */
@@ -108,9 +101,9 @@
 
 /* === Controls === */
 
-.player__settings {
+.player-settings {
   display: flex;
-  width: calc(var(--playerHeight) * 4);
+  width: calc(var(--player-size) * 4);
 }
 
 /* === Volume === */
@@ -119,8 +112,6 @@
   display: none;
 }
 
-.has-muted {}
-
 .has-muted .icon-volume-on {
   display: none;
 }
@@ -128,11 +119,6 @@
 .has-muted .icon-volume-off {
   display: inline;
   opacity: .7;
-}
-
-.player__controls.is-active > svg {
-  fill: var(--iconColorActive);
-  filter: drop-shadow(0 0 3px rgba(var(--iconColorActive), 0.4));
 }
 
 .volume-btn {
@@ -144,7 +130,7 @@
 .volume {
   position: absolute;
   left: 50%;
-  bottom: calc(var(--playerHeight) - 5px);
+  bottom: calc(var(--player-size) - 5px);
   width: 40px;
   margin-left: -20px;
   height: 120px;
@@ -152,10 +138,10 @@
   visibility: hidden;
   transform: translateY(10px);
   transition: all .3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
-  background: hsl(var(--primaryHue), 100%, 57%);
+  background: hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   border: 1px solid white;
   border-radius: 1px;
-  z-index: var(--volZ);
+  z-index: var(--volume-z);
 }
 
 .volume::after,
@@ -164,7 +150,7 @@
   position: absolute;
   bottom: -12px;
   border: 7px solid transparent;
-  border-top: 7px solid hsl(var(--primaryHue), 100%, 57%);
+  border-top: 7px solid hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   left: 50%;
   margin-left: -7px;
 }
@@ -181,23 +167,23 @@
   visibility: visible;
 }
 
-.volume__track {
+.volume-track {
   position: relative;
   display: block;
-  width: var(--barSize);
+  width: var(--bar-size);
   height: 100px;
   margin: 10px auto;
-  background: var(--barBG);
-  border-radius: var(--barSize);
+  background: #fff;
+  border-radius: var(--bar-size);
   overflow: hidden;
 }
 
-.volume__bar {
+.volume-bar {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: -1px;
+  right: -1px;
   bottom: 0;
-  background: hsl(var(--primaryHue), 100%, 40%);
+  background: hsl(var(--hue-1), var(--sat-1), calc(var(--lgt-1) - 13%));
   height: 50%;
 }
 
@@ -211,31 +197,31 @@
   position: relative;
 }
 
-.progress-container:hover .progress__bar:after {
+.progress-container:hover .progress-bar:after {
   opacity: 1;
 }
 
 .progress {
-  background: var(--barBG);
-  border-radius: var(--barSize);
-  height: var(--barSize);
+  background: #fff;
+  border-radius: var(--bar-size);
+  height: var(--bar-size);
 }
 
-.progress__bar,
-.progress__preload {
-  border-radius: var(--barSize) 0 0 var(--barSize);
-  height: var(--barSize);
+.progress-bar,
+.progress-preload {
+  border-radius: var(--bar-size) 0 0 var(--bar-size);
+  height: var(--bar-size);
   position: absolute;
   width: 0;
 }
 
-.progress__bar {
-  background: var(--progressBG);
+.progress-bar {
+  background: hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   z-index: 1;
 }
 
-.progress__bar:after {
-  background: hsl(var(--primaryHue), 100%, 57%);
+.progress-bar:after {
+  background: hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   border-radius: 6px;
   content: "";
   height: 10px;
@@ -248,16 +234,17 @@
   width: 10px;
 }
 
-.progress__bar--active:after {
+.progress-bar--active:after {
   transform: scale(1.4);
 }
 
-.progress__preload {
-  background: var(--barProgressBG);
+.progress-preload {
+  background: hsl(var(--hue-1), var(--sat-1), calc(var(--lgt-1) + 13%));
   z-index: 0;
 }
 
 /* === Animations === */
+
 @keyframes fs {
   0% {
     opacity: 0;

@@ -1,4 +1,4 @@
-import bind from "../helpers/bind.js";
+import bind from "../helpers/bind";
 
 let _index, _isPlaying, _title, _tracks;
 
