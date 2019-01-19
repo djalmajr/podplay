@@ -1,15 +1,13 @@
-import { render } from "lighterhtml";
+import { bind, wire } from "hyperhtml";
 import store from "./store";
-import App from "./views/app";
 
-const wrapper = document.querySelector("#__wrapper__");
+const appWire = wire();
+const html = bind(document.querySelector("#__wrapper__"));
+const getApp = () => require("./views/app").default;
+const render = App => html`${App(appWire)}`; // prettier-ignore
 
-store.init(() => render(wrapper, App));
+store.init(() => render(getApp()));
 
 if (module.hot) {
-  module.hot.accept("./views/app", () => {
-    const NextApp = require("./views/app").default;
-    wrapper.innerHTML = "";
-    wrapper.appendChild(NextApp());
-  });
+  module.hot.accept("./views/app", () => render(getApp()));
 }

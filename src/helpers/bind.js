@@ -4,7 +4,7 @@ const defaults = {
 };
 
 const bind = function(callback, config = {}) {
-  const cfg = Object.assign(defaults, config);
+  const cfg = Object.assign({}, defaults, config);
   const methods = Object.keys(this)
     .filter(prop => typeof this[prop] === "function")
     .filter(prop => !prop.match(cfg.regex));

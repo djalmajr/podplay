@@ -1,24 +1,23 @@
-import { html } from "lighterhtml";
 import store from "../store";
 import "./player.css";
 
 const BTN_SIZE = 45;
 
-// <div class="progress-container">
-//   <div class="progress">
-//     <div class="progress-bar"></div>
-//     <div class="progress-preload"></div>
-//   </div>
-// </div>
-export default () => {
-  const btnCount = store.isPlaying ? 5 : 4;
-  const infoStyle = { width: `calc(100% - ${btnCount} * ${BTN_SIZE}px)` };
+export default html => {
+  const styles = {
+    info: { width: `calc(100% - ${store.isPlaying ? 5 : 4} * ${BTN_SIZE}px)` },
+  };
+
   const togglePath = store.isPlaying
-    ? "M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z"
-    : "M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z";
+    ? "M 12,26 16.33,26 16.33,10 12,10 z M 20.66,26 25,26 25,10 20.66,10 z"
+    : "M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z";
 
   return html`
     <div class="player">
+      <div class="progress">
+        <div class="progress-bar"></div>
+        <div class="progress-preload"></div>
+      </div>
       <div class="player-inner">
         <div class="player-playback">
           <img
@@ -55,7 +54,7 @@ export default () => {
             </svg>
           </button>
         </div>
-        <div class="player-info" style=${infoStyle}>
+        <div class="player-info" style=${styles.info}>
           <div class="player-info-title">233 - Os Gregos e Troianos Juntos</div>
           <div class="player-info-time">
             <span class="player-info-time--current">23:23</span> <span> / </span>

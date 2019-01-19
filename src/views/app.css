@@ -16,7 +16,7 @@
   --playlist-item-img-size: calc(var(--playlist-item-size) - 1.3em);
   --playlist-item-icon-size: calc(var(--playlist-item-img-size) / 3.5);
 
-  --bar-size: 3px;
+  --bar-size: 6px;
   --player-size: 45px;
 
   --player-z: 99999;

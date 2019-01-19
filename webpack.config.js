@@ -23,9 +23,9 @@ module.exports = getConfig(__dirname, {
   externalsPluginOptions: {
     externals: [
       {
-        module: "lighterhtml",
-        global: "lighterhtml",
-        entry: DEV ? "min.js" : `${CDN}/lighterhtml@0.5.0/min.js`,
+        module: "hyperhtml",
+        global: "hyperHTML",
+        entry: DEV ? "umd.js" : `${CDN}/hyperhtml@2.25.4/umd.js`,
       },
     ],
   },
