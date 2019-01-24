@@ -1,48 +1,11 @@
 import barSize from "../helpers/bar-size";
 import wheel from "../helpers/wheel";
 
-const DOC_TITLE = document.title;
-
 let _audio;
+// let _seeking = false;
 let _seekingVol = false;
 let _isPlaying = false;
 let _rightClick = false;
-
-const _settings = {
-  buffered: true,
-  volume: 0.7,
-};
-
-const _mediaError = {
-  "1": "MEDIA_ERR_ABORTED",
-  "2": "MEDIA_ERR_NETWORK",
-  "3": "MEDIA_ERR_DECODE",
-  "4": "MEDIA_ERR_SRC_NOT_SUPPORTED",
-};
-
-const _handleError = evt => {
-  // if (_isEmpty) {
-  //   return;
-  // }
-
-  _audio.pause();
-  // _curTime = -1;
-  // _durTime = -1;
-  _isPlaying = false;
-  // _changeDocumentTitle();
-
-  throw new Error("Houston we have a problem: " + _mediaError[evt.target.error.code]);
-};
-
-const _changeDocTitle = title => {
-  if (_settings.canChangeTitle) {
-    if (title) {
-      document.title = title;
-    } else {
-      document.title = DOC_TITLE;
-    }
-  }
-};
 
 const _seekingFalse = () => {
   _seekingVol = false;
@@ -50,15 +13,9 @@ const _seekingFalse = () => {
 
 export default class {
   constructor(options = {}) {
-    Object.assign(_settings, options);
-
     _audio = new Audio();
-    _audio.volume = _settings.volume;
+    _audio.volume = options.volume;
     _audio.preload = "auto";
-
-    _audio.addEventListener("error", _handleError, false);
-    // _audio.addEventListener("timeupdate", _timeUpdate, false);
-    // _audio.addEventListener("ended", _doEnd, false);
 
     document.addEventListener("mouseup", _seekingFalse, false);
   }
@@ -69,8 +26,34 @@ export default class {
     return _isPlaying;
   }
 
+  get buffered() {
+    return _audio.buffered;
+  }
+
+  get currentTime() {
+    return _audio.currentTime;
+  }
+
+  get duration() {
+    return _audio.duration;
+  }
+
   get volume() {
     return _audio.volume;
+  }
+
+  // Events
+
+  onUpdate(callback) {
+    _audio.addEventListener("timeupdate", callback, false);
+  }
+
+  onEnd(callback) {
+    _audio.addEventListener("ended", callback, false);
+  }
+
+  onError(callback) {
+    _audio.addEventListener("error", callback, false);
   }
 
   // Actions

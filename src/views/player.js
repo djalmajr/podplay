@@ -7,6 +7,7 @@ export default html => {
   const styles = {
     info: { width: `calc(100% - ${store.isPlaying ? 5 : 4} * ${BTN_SIZE}px)` },
     volumeBar: { height: `${store.volume * 100}%` },
+    progressBar: { width: `${store.progress}%` },
   };
 
   const playPathSVG = store.isPlaying
@@ -20,8 +21,8 @@ export default html => {
   return html`
     <div class="player">
       <div class="progress">
-        <div class="progress-bar"></div>
-        <div class="progress-preload"></div>
+        <div class="progress-bar" style=${styles.progressBar} />
+        <div class="progress-preload" />
       </div>
       <div class="player-inner">
         <div class="player-playback">
@@ -44,10 +45,9 @@ export default html => {
           </button>
           <button
             class="player-controls player-controls--toggle"
-            onclick=${() => store.playPause()}
+            onclick=${store.playPause}
           >
             <svg
-              class="icon-play"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -62,8 +62,9 @@ export default html => {
         <div class="player-info" style=${styles.info}>
           <div class="player-info-title">233 - Os Gregos e Troianos Juntos</div>
           <div class="player-info-time">
-            <span class="player-info-time--current">23:23</span> <span> / </span>
-            <span class="player-info-time--duration">54:54</span>
+            <span class="player-info-time--current">${store.currentTime}</span>
+            <span> / </span>
+            <span class="player-info-time--duration">${store.duration}</span>
           </div>
         </div>
         <div class="player-settings">
@@ -80,9 +81,9 @@ export default html => {
                   transform="translate(206.974 457.6)"
                 />
                 <text
-                  transform="translate(217.464 576.016)"
                   font-size="11"
                   font-family="OpenSans, Open Sans"
+                  transform="translate(217.464 576.016)"
                 >
                   <tspan x="0" y="0">15</tspan>
                 </text>
@@ -102,9 +103,9 @@ export default html => {
                   transform="translate(241.001 457.6)"
                 />
                 <text
-                  transform="translate(245.211 576.11)"
                   font-size="11"
                   font-family="OpenSans, Open Sans"
+                  transform="translate(245.211 576.11)"
                 >
                   <tspan x="0" y="0">15</tspan>
                 </text>

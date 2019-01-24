@@ -67,8 +67,7 @@
   fill: white;
 }
 
-.icon-play > path,
-.icon-volume > path,
+.player svg > path,
 .player-controls,
 .player-info {
   transition: all var(--ms) ease;
