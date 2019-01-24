@@ -46,7 +46,15 @@ export default {
     return _playlist.tracks;
   },
 
+  get volume() {
+    return _player.volume;
+  },
+
   // Actions
+
+  changeVolume(evt) {
+    _player.changeVolume(evt);
+  },
 
   playPause() {
     if (_player.isPlaying) {
@@ -55,5 +63,9 @@ export default {
     }
 
     _player.play(mock.tracks[0]);
+  },
+
+  setVolume(evt) {
+    _player.setVolume(evt);
   },
 };

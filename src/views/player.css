@@ -27,7 +27,7 @@
   top: 0;
   right: 0;
   z-index: 0;
-  opacity: .3;
+  opacity: 0.3;
 }
 
 /* === Controls === */
@@ -68,6 +68,7 @@
 }
 
 .icon-play > path,
+.icon-volume > path,
 .player-controls,
 .player-info {
   transition: all var(--ms) ease;
@@ -84,7 +85,7 @@
 }
 
 .player-info-title {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: bold;
   margin-left: 8px;
   overflow: hidden;
@@ -94,7 +95,7 @@
 }
 
 .player-info-time {
-  font-size: .7em;
+  font-size: 0.7em;
   margin-left: 8px;
 }
 
@@ -105,19 +106,6 @@
 }
 
 /* === Volume === */
-
-.icon-volume-off {
-  display: none;
-}
-
-.has-muted .icon-volume-on {
-  display: none;
-}
-
-.has-muted .icon-volume-off {
-  display: inline;
-  opacity: .7;
-}
 
 .volume-btn {
   display: block;
@@ -135,7 +123,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: all .3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+  transition: all 0.3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
   background: hsl(var(--hue-1), var(--sat-1), var(--lgt-1));
   border: 1px solid white;
   border-radius: 1px;

@@ -1,5 +1,6 @@
 import { bind, wire } from "hyperhtml";
 import store from "./store";
+import "./helpers/polyfills";
 
 const appWire = wire();
 const html = bind(document.querySelector("#__wrapper__"));
