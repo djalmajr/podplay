@@ -2,13 +2,15 @@ import wheel from "./wheel";
 
 export default evt => {
   const target = evt.currentTarget;
+  const isVol = target.classList.contains("volume");
+  const query = `.${isVol ? "volume" : "progress"}-bar`;
+  const bar = target.querySelector(query);
 
-  if (target.classList.contains("progress")) {
-    const offset = evt.clientX - target.offset().left + window.pageXOffset;
+  if (!isVol) {
+    const offset = evt.clientX - bar.offset().left + window.pageXOffset;
     return Math.round((offset * 100) / target.offsetWidth);
   }
 
-  const bar = target.querySelector(".volume-bar");
   let value = parseInt(bar.css("height"), 10);
 
   if (evt.type === wheel()) {
