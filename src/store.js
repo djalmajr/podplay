@@ -19,6 +19,62 @@ const _settings = {
   volume: 0.7,
 };
 
+const _changeDocumentTitle = title => {
+  if (_settings.changeDocTitle) {
+    document.title = title || DOC_TITLE;
+  }
+};
+
+// function listHandler(evt) {
+//   evt.preventDefault();
+
+//   if (evt.target.matches(".pl-list__title")) {
+//     var current = parseInt(evt.target.closest(".pl-list").getAttribute("data-track"), 10);
+//     if (index !== current) {
+//       index = current;
+//       play(current);
+//     } else {
+//       playToggle();
+//     }
+//   } else {
+//     if (!!evt.target.closest(".pl-list__remove")) {
+//       var parentEl = evt.target.closest(".pl-list");
+//       var isDel = parseInt(parentEl.getAttribute("data-track"), 10);
+
+//       playList.splice(isDel, 1);
+//       parentEl.closest(".pl-ul").removeChild(parentEl);
+
+//       plLi = pl.querySelectorAll("li");
+
+//       [].forEach.call(plLi, function(el, i) {
+//         el.setAttribute("data-track", i);
+//       });
+
+//       if (!audio.paused) {
+//         if (isDel === index) {
+//           play(index);
+//         }
+//       } else {
+//         if (isEmptyList()) {
+//           clearAll();
+//         } else {
+//           if (isDel === index) {
+//             if (isDel > playList.length - 1) {
+//               index -= 1;
+//             }
+//             audio.src = playList[index].file;
+//             trackTitle.innerHTML = playList[index].title;
+//             progressBar.style.width = 0;
+//           }
+//         }
+//       }
+//       if (isDel < index) {
+//         index--;
+//       }
+//     }
+//   }
+// }
+
 export default {
   init(render) {
     _render = render;
@@ -29,7 +85,7 @@ export default {
     bind.call(this, render);
 
     if (_settings.confirmClose) {
-      window.addEventListener("beforeunload", this.beforeUnload, false);
+      window.addEventListener("beforeunload", this.handleUnload, false);
     }
 
     _player.onUpdate(render);
@@ -66,7 +122,7 @@ export default {
     };
 
     _player.pause();
-    // changeDocumentTitle();
+    _changeDocumentTitle();
 
     notify("Houston we have a problem", {
       body: errors[evt.target.error.code],
@@ -143,11 +199,15 @@ export default {
     evt.preventDefault();
 
     if (_player.playing) {
+      _changeDocumentTitle();
       _player.pause();
       return;
     }
 
-    _player.play(mock.tracks[0]);
+    const track = mock.tracks[0];
+
+    _changeDocumentTitle(track.title);
+    _player.play(track);
   },
 
   forward(evt) {
