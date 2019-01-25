@@ -7,6 +7,7 @@ export default html => {
   const styles = {
     info: { width: `calc(100% - ${store.isPlaying ? 5 : 4} * ${BTN_SIZE}px)` },
     volumeBar: { height: `${store.volume * 100}%` },
+    preloadBar: { width: `${store.preload}%` },
     progressBar: { width: `${store.progress}%` },
   };
 
@@ -22,7 +23,7 @@ export default html => {
     <div class="player">
       <div class="progress">
         <div class="progress-bar" style=${styles.progressBar} />
-        <div class="progress-preload" />
+        <div class="progress-preload" style=${styles.preloadBar} />
       </div>
       <div class="player-inner">
         <div class="player-playback">

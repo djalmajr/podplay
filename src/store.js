@@ -101,7 +101,7 @@ export default {
     return `${mins}:${secs < 10 ? "0" + secs : secs}`;
   },
 
-  get progress() {
+  get preload() {
     if (!this.isPlaying) {
       return 0;
     }
@@ -112,6 +112,14 @@ export default {
         : _player.currentTime;
 
     return Math.round((time * 100) / _player.duration);
+  },
+
+  get progress() {
+    if (!this.isPlaying) {
+      return 0;
+    }
+
+    return Math.round((_player.currentTime * 100) / _player.duration);
   },
 
   get volume() {

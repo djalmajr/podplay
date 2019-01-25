@@ -15,17 +15,19 @@
     "url": "git@github.com:djalmajr/podplayer.git"
   },
   "scripts": {
-    "changelog": "run-changelog",
-    "deploy": "run-deploy",
-    "start": "run-start --hot",
     "build": "run-build",
+    "changelog": "run-changelog",
     "postversion": "run-postversion",
-    "version": "run-version"
+    "start": "run-start HOT=true",
+    "version": "run-changelog-version"
   },
   "dependencies": {
     "hyperhtml": "^2.25.4"
   },
   "devDependencies": {
-    "wprun": "djalmajr/wprun"
+    "wprun": "djalmajr/wprun",
+    "wprun-config-styles": "djalmajr/wprun-config-styles",
+    "wprun-script-changelog": "djalmajr/wprun-script-changelog",
+    "wprun-script-lint": "djalmajr/wprun-script-lint"
   }
 }

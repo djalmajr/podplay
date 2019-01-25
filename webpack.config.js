@@ -2,7 +2,6 @@ const getConfig = require("wprun");
 
 const DEV = process.env.NODE_ENV === "development";
 const CDN = "https://cdn.jsdelivr.net/npm";
-// const CDN = "https://unpkg.com";
 
 module.exports = getConfig(__dirname, {
   copyPluginOptions: [

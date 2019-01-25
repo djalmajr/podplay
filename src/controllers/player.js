@@ -31,11 +31,11 @@ export default class {
   }
 
   get currentTime() {
-    return _audio.currentTime;
+    return _audio.currentTime || 0;
   }
 
   get duration() {
-    return _audio.duration;
+    return _audio.duration || 0;
   }
 
   get volume() {
