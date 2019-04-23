@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PodPlayer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="PodPlayer">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400,400i,700" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" /> <!-- dev -->
+    <link href="style.min.css" rel="stylesheet" /> <!-- prod -->
+  </head>
+  <body>
+    <noscript>
+      You must enable JavaScript to see this page correctly.
+    </noscript>
+    <div id="root">
+      <div class="app-loader">
+        <div class="app-loader-spinner"></div>
+      </div>
+    </div>
+    <script src="hyperhtml.min.js"></script>
+    <script src="../src/index.js" type="module"></script> <!-- dev -->
+    <script src="bundle.js"></script> <!-- prod -->
+  </body>
+</html>

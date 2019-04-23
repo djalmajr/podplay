@@ -1,4 +1,4 @@
-import wheel from "./wheel";
+import wheel from "./wheel.js";
 
 export default evt => {
   const target = evt.currentTarget;

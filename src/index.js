@@ -1,14 +1,8 @@
-import { bind, wire } from "hyperhtml";
-import store from "./store";
-import "./helpers/polyfills";
+import store from "./store.js";
+import App from "./views/app.js";
+import "./helpers/polyfills.js";
 
-const appWire = wire();
-const html = bind(document.querySelector("#__wrapper__"));
-const getApp = () => require("./views/app").default;
-const render = App => html`${App(appWire)}`; // prettier-ignore
+const appWire = hyperHTML.wire();
+const html = hyperHTML.bind(document.querySelector("#root"));
 
-store.init(() => render(getApp()));
-
-if (module.hot) {
-  module.hot.accept("./views/app", () => render(getApp()));
-}
+store.init(() => html`${App(appWire)}`); // prettier-ignore

@@ -1,6 +1,6 @@
-import barSize from "../helpers/bar-size";
-import wheel from "../helpers/wheel";
-import notify from "../helpers/notify";
+import barSize from "../helpers/bar-size.js";
+import wheel from "../helpers/wheel.js";
+import notify from "../helpers/notify.js";
 
 let _audio;
 let _progress = 0;

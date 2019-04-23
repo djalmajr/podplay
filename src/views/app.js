@@ -1,14 +1,12 @@
-import { wire } from "hyperhtml";
-import TopBar from "./topbar";
-import Playlist from "./playlist";
-import Player from "./player";
-import Navigation from "./navigation";
-import "./app.css";
+import TopBar from "./topbar.js";
+import Playlist from "./playlist.js";
+import Player from "./player.js";
+import Navigation from "./navigation.js";
 
-const topbarWire = wire();
-const playlistWire = wire();
-const playerWire = wire();
-const navigationWire = wire();
+const topbarWire = hyperHTML.wire();
+const playlistWire = hyperHTML.wire();
+const playerWire = hyperHTML.wire();
+const navigationWire = hyperHTML.wire();
 
 // prettier-ignore
 export default html => html`

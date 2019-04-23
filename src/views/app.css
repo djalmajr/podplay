@@ -1,42 +1,30 @@
 :root {
   --font-family-1: "Open Sans", sans-serif;
   --font-family-2: "Raleway", sans-serif;
+
   --text-color: #707070;
+  --text-color-light: #969696;
 
   --hue-1: 28;
   --sat-1: 100%;
   --lgt-1: 57%;
 
   --hue-2: 0;
-  --sat-2: 0%;
+  --sat-2: 0.1%;
   --lgt-2: 20%;
-
-  --playlist-current-color: #fff;
-  --playlist-item-size: 5em;
-  --playlist-item-img-size: calc(var(--playlist-item-size) - 1.3em);
-  --playlist-item-icon-size: calc(var(--playlist-item-img-size) / 3.5);
-
-  --bar-size: 6px;
-  --player-size: 45px;
-
-  --player-z: 99999;
-  --volume-z: 88888;
-  --playlist-z: 77777;
-
-  --ms: 0.5s;
 }
 
 html, body {
   font-family: var(--font-family-1);
 }
 
-#__wrapper__ {
+#root {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.h-hide {
+.hidden {
   width: 0 !important;
   overflow: hidden !important;
 }

@@ -1,8 +1,8 @@
-import Player from "./controllers/player";
-import Playlist from "./controllers/playlist";
-import notify from "./helpers/notify";
-import bind from "./helpers/bind";
-import mock from "./mock";
+import Player from "./controllers/player.js";
+import Playlist from "./controllers/playlist.js";
+import notify from "./helpers/notify.js";
+import bind from "./helpers/bind.js";
+import mock from "./mock.js";
 
 let _player;
 let _playlist;

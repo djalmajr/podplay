@@ -14,20 +14,30 @@
     "type": "git",
     "url": "git@github.com:djalmajr/podplayer.git"
   },
+  "watch": {
+    "concat-css": "src/*.css"
+  },
   "scripts": {
-    "build": "run-build",
-    "changelog": "run-changelog",
-    "postversion": "run-postversion",
-    "start": "run-start HOT=true",
-    "version": "run-changelog-version"
+    "build": "npm run copy && sed -n -i '/<!-- dev -->/!p' dist/index.html && npm run build-css && npm run build-es2015 && npm run build-js && rm -rf es2015",
+    "build-css": "npm run concat-css && npm run uglify-css && rm dist/style.css",
+    "build-es2015": "babel src --out-dir es2015 --presets=es2015",
+    "build-js": "echo '/* eslint-disable */' > dist/bundle.js && npx browserify ./es2015/**.js | npx uglify-js -mc warnings=false >> dist/bundle.js",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "concat-css": "cp public/style.css dist && find src -type f -name '*.css' -exec cat {} ';' >> dist/style.css",
+    "copy": "rm -rf dist; mkdir dist; cp public/* dist; cp node_modules/hyperhtml/umd.js dist/hyperhtml.min.js",
+    "deploy": "npm run build && npx gh-pages -d dist",
+    "postversion": "git push && git push --tags",
+    "serve": "npx live-server --open=dist .",
+    "start": "npm run copy && npm run concat-css && sed -n -i '/<!-- prod -->/!p' dist/index.html && npm run serve",
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "uglify-css": "npx uglifycss dist/style.css > dist/style.min.css",
+    "watch": "npm-watch"
   },
   "dependencies": {
-    "hyperhtml": "^2.25.4"
+    "hyperhtml": "^2.25.5"
   },
   "devDependencies": {
-    "wprun": "djalmajr/wprun",
-    "wprun-config-styles": "djalmajr/wprun-config-styles",
-    "wprun-script-changelog": "djalmajr/wprun-script-changelog",
-    "wprun-script-lint": "djalmajr/wprun-script-lint"
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   }
 }

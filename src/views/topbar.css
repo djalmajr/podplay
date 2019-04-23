@@ -1,9 +1,11 @@
 .topbar {
+  --topbar-height: 48px;
+
   align-items: center;
-  background-color: #343434;
-  color: #969696;
+  background: hsl(var(--hue-2), var(--sat-2), var(--lgt-2));
+  color: var(--text-color-light);
   display: flex;
-  height: 48px;
+  height: var(--topbar-height);
   font-size: 1rem;
   padding: 0 1em;
 }

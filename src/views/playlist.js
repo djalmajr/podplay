@@ -1,6 +1,6 @@
-import { wire } from "hyperhtml";
-import store from "../store";
-import "./playlist.css";
+import store from "../store.js";
+
+const { wire } = hyperHTML;
 
 const renderTrack = (track, idx) => wire(track, ":playlist-track")`
   <li class=${`playlist-item ${idx === 0 ? "is-active" : ""}`} data-track=${idx}>
