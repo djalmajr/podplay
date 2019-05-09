@@ -12,8 +12,8 @@ module.exports = getConfig(__dirname, {
     },
   ],
   htmlPluginOptions: {
-    title: "PodPlayer",
-    description: "PodPlayer",
+    title: "PodPlay",
+    description: "PodPlay",
     stylesheets: [
       `${CDN}/ionicons@4.5.1/dist/css/ionicons.min.css`,
       "https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400,400i,700",

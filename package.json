@@ -1,18 +1,18 @@
 {
-  "name": "podplayer",
+  "name": "podplay",
   "private": true,
   "version": "0.1.0",
-  "description": "PodPlayer",
+  "description": "PodPlay",
   "author": "Djalma Jr. <djalmajr@gmail.com>",
   "license": "UNLICENSED",
   "main": "src/index.js",
-  "homepage": "https://github.com/djalmajr/podplayer/tree/master#readme",
+  "homepage": "https://github.com/djalmajr/podplay/tree/master#readme",
   "bugs": {
-    "url": "https://github.com/djalmajr/podplayer/issues"
+    "url": "https://github.com/djalmajr/podplay/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:djalmajr/podplayer.git"
+    "url": "git@github.com:djalmajr/podplay.git"
   },
   "scripts": {
     "build": "run-build",
