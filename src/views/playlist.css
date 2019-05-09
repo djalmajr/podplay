@@ -1,4 +1,13 @@
 .playlist {
+  --playlist-z: 77777;
+  --playlist-current-color: #fff;
+  --playlist-item-size: 5em;
+  --playlist-item-img-size: calc(var(--playlist-item-size) - 1.3em);
+  --playlist-item-icon-size: calc(var(--playlist-item-img-size) / 3.5);
+  --playlist-item-icon-color: #555;
+  --playlist-item-desc-lines: 2;
+  --playlist-item-desc-line-height: 1.1;
+
   background: #fff;
   color: var(--text-color);
   flex: 1;
@@ -46,7 +55,7 @@
 
 .playlist-item-icon {
   border-bottom: calc(var(--playlist-item-icon-size) / 2) solid transparent;
-  border-left: calc(var(--playlist-item-icon-size) / 2 + 3px) solid #555;
+  border-left: calc(var(--playlist-item-icon-size) / 2 + 3px) solid var(--playlist-item-icon-color);
   border-top: calc(var(--playlist-item-icon-size) / 2) solid transparent;
   display: inline-block;
   height: 0;
@@ -70,8 +79,6 @@
 }
 
 .playlist-item-desc {
-  --playlist-item-desc-lines: 2;
-  --playlist-item-desc-line-height: 1.1;
   -webkit-line-clamp: var(--playlist-item-desc-lines);
   -webkit-box-orient: vertical;
   display: -webkit-box;

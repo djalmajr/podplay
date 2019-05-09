@@ -1,14 +1,14 @@
 import { bind, wire } from "hyperhtml";
+import App from "./views/app";
 import store from "./store";
 import "./helpers/polyfills";
 
 const appWire = wire();
 const html = bind(document.querySelector("#__wrapper__"));
-const getApp = () => require("./views/app").default;
-const render = App => html`${App(appWire)}`; // prettier-ignore
+const render = () => html`${App(appWire)}`; // prettier-ignore
 
-store.init(() => render(getApp()));
+store.init(render);
 
 if (module.hot) {
-  module.hot.accept("./views/app", () => render(getApp()));
+  module.hot.accept("./views/app", render);
 }

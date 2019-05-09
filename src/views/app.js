@@ -10,7 +10,6 @@ const playlistWire = wire();
 const playerWire = wire();
 const navigationWire = wire();
 
-// prettier-ignore
 export default html => html`
   ${TopBar(topbarWire)}
   ${Playlist(playlistWire)}

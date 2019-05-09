@@ -40,7 +40,7 @@ export default html => {
             class="player-img"
             src="http://bibotalk.com/wp-content/uploads/2018/12/fde60post-360x200.png"
           />
-          <button class=${`player-controls${!store.playing ? "" : " h-hide"}`}>
+          <button class=${`player-controls${!store.playing ? "" : " hidden"}`}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
@@ -79,7 +79,7 @@ export default html => {
         </div>
         <div class="player-settings">
           <button
-            class=${`player-controls${store.playing ? "" : " h-hide"}`}
+            class=${`player-controls${store.playing ? "" : " hidden"}`}
             onclick=${store.rewind}
           >
             <svg
@@ -104,7 +104,7 @@ export default html => {
             </svg>
           </button>
           <button
-            class=${`player-controls${store.playing ? "" : " h-hide"}`}
+            class=${`player-controls${store.playing ? "" : " hidden"}`}
             onclick=${store.forward}
           >
             <svg

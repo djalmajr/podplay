@@ -17,17 +17,15 @@
   "scripts": {
     "build": "run-build",
     "changelog": "run-changelog",
+    "deploy": "run-deploy",
     "postversion": "run-postversion",
-    "start": "run-start HOT=true",
-    "version": "run-changelog-version"
+    "start": "run-start --hot",
+    "version": "run-version"
   },
   "dependencies": {
     "hyperhtml": "^2.25.4"
   },
   "devDependencies": {
-    "wprun": "djalmajr/wprun",
-    "wprun-config-styles": "djalmajr/wprun-config-styles",
-    "wprun-script-changelog": "djalmajr/wprun-script-changelog",
-    "wprun-script-lint": "djalmajr/wprun-script-lint"
+    "wprun": "djalmajr/wprun#4a5f97"
   }
 }

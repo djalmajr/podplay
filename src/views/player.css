@@ -1,6 +1,14 @@
 /* === Audio Player === */
 
 .player {
+  --player-size: 45px;
+  --player-speed: 0.5s;
+  --player-z: 99999;
+  --progress-bar-size: 6px;
+  --progress-bar-border-size: 2px;
+  --progress-bar-circle-size: 14px;
+  --volume-z: 88888;
+
   display: flex;
   flex-direction: column;
   font-family: var(--font-family-1);
@@ -70,7 +78,7 @@
 .player svg > path,
 .player-controls,
 .player-info {
-  transition: all var(--ms) ease;
+  transition: all var(--player-speed) ease;
 }
 
 /* === Track === */
@@ -177,7 +185,7 @@
 .progress {
   background: hsl(var(--hue-1), var(--sat-1), 80%);
   cursor: pointer;
-  height: var(--bar-size);
+  height: var(--progress-bar-size);
   position: relative;
 }
 
@@ -187,7 +195,7 @@
 
 .progress-bar,
 .progress-preload {
-  height: var(--bar-size);
+  height: var(--progress-bar-size);
   position: absolute;
   width: 0;
 }
@@ -198,20 +206,18 @@
 }
 
 .progress-bar.is-playing:after {
-  --progress-bar-size: 14px;
-  --progress-bar-border-size: 2px;
   background: hsl(var(--hue-1), var(--sat-1), 95%);
   border: var(--progress-bar-border-size) solid hsl(var(--hue-1), var(--sat-1), calc(var(--lgt-1) - 15%));
-  border-radius: calc((var(--progress-bar-size) + var(--progress-bar-border-size)) / 1.8);
+  border-radius: calc((var(--progress-bar-circle-size) + var(--progress-bar-border-size)) / 1.8);
   content: "";
-  height: var(--progress-bar-size);
-  margin-top: calc(var(--progress-bar-size) / -2 + 1px);
+  height: var(--progress-bar-circle-size);
+  margin-top: calc(var(--progress-bar-circle-size) / -2 + 1px);
   opacity: 0;
   position: absolute;
-  right: calc(var(--progress-bar-size) * -1);
+  right: calc(var(--progress-bar-circle-size) * -1);
   top: 0;
   transition: opacity .3s ease;
-  width: var(--progress-bar-size);
+  width: var(--progress-bar-circle-size);
 }
 
 .progress-bar.is-active:after {
